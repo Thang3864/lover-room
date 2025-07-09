@@ -88,11 +88,9 @@ const galaxyParameters = {
 
 function getHeartImageFromURL() {
     const params = new URLSearchParams(window.location.search);
-    const imgs = params.get('heart');
-    if (!imgs) return null;
-    return imgs.split(/[,#\\s]+/).filter(url => url.trim() !== '');
+    const img = params.get('heart');
+    return img ? [img] : null;
 }
-
 // ✅ Danh sách hình ảnh trái tim
 const heartImages = getHeartImageFromURL() || [
     ...(window.dataLove2Loveloom && window.dataLove2Loveloom.data.heartImages ? window.dataLove2Loveloom.data.heartImages : []),
