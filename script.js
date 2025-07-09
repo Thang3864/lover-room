@@ -85,12 +85,12 @@ const galaxyParameters = {
 };
 
 // Danh sách hình ảnh trái tim, kết hợp dữ liệu từ subdomain và mặc định
-// ✅ Lấy ảnh từ URL nếu có
-// ✅ Lấy ảnh từ URL nếu có
+
 function getHeartImageFromURL() {
     const params = new URLSearchParams(window.location.search);
-    const img = params.get('heart');
-    return img ? [img] : null;
+    const imgs = params.get('heart');
+    if (!imgs) return null;
+    return imgs.split(/[,#\\s]+/).filter(url => url.trim() !== '');
 }
 
 // ✅ Danh sách hình ảnh trái tim
